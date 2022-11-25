@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "allowJs": true,
+    "declaration": true,
+    "moduleResolution": "node"
+  }
+}

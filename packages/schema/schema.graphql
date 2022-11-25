@@ -1,0 +1,26 @@
+schema {
+  query: Query
+}
+
+type Sprite {
+    back_default: String
+    back_female: String
+    back_shiny: String
+    back_shiny_female: String
+    front_default: String
+    front_female: String
+    front_shiny: String
+    front_shiny_female: String
+}
+
+type Pokemon {
+    id: Int
+    height: Int
+    weight: Int
+    name: String
+    sprites: Sprite
+}
+
+type Query {
+    pokemon(name: String): Pokemon
+}

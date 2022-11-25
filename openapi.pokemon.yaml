@@ -1,0 +1,98 @@
+openapi: 3.0.3
+info:
+  title: Pokemon API
+  version: v1
+  description: This documentation describes Pokemon API information
+tags:
+  - name: Pokemon
+    description: ''
+paths:
+  /pokemon/{name}:
+    get:
+      tags:
+        - Pokemon
+      summary: Get the information about the Pokemon by name
+      description: ''
+      operationId: GetPokemonByName
+      parameters:
+        - name: name
+          in: path
+          description: Pokemon name
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pokemon'
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestError'
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+    description: ''
+components:
+  schemas:
+    Pokemon:
+      description: ''
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int
+        height:
+          type: integer
+          format: int
+        weight:
+          type: integer
+          format: int
+        name:
+          type: string
+          example: bulbasaur
+        sprites:
+          $ref: '#/components/schemas/Sprite'
+    Sprite:
+      type: object
+      properties:
+        back_default:
+          type: string
+        back_female:
+          type: string
+        back_shiny:
+          type: string
+        back_shiny_female:
+          type: string
+        front_default:
+          type: string
+        front_female:
+          type: string
+        front_shiny:
+          type: string
+        front_shiny_female:
+          type: string
+    InternalServerError:
+      description: ''
+      type: object
+      properties:
+        message:
+          type: string
+    BadRequestError:
+      description: ''
+      type: object
+      properties:
+        message:
+          type: string
+servers:
+  - url: https://pokeapi.co/api/v2
+    variables: {}
+    description: The official pokeapi server

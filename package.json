@@ -9,16 +9,23 @@
     "eslint": "^8.17.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "openapi-typescript-codegen": "0.22.0",
+    "path": "^0.12.7",
     "prettier": "^2.6.2",
     "ts-node": "^10.8.1",
     "typescript": "^4.7.3"
   },
+  "workspaces": [
+    "packages/server",
+    "packages/schema"
+  ],
   "scripts": {
-    "build": "tsc",
-    "start": "node ./build/index.js",
-    "dev": "ts-node ./src/index.ts"
-  },
-  "dependencies": {
-    "express": "^4.18.1"
+    "lint": "eslint --ext .ts packages/",
+    "format": "eslint --ext .ts packages/ --fix",
+    "build": "yarn server build",
+    "dev": "yarn server dev",
+    "test": "yarn server test",
+    "server": "yarn workspace @server-js/server",
+    "schema": "yarn workspace @server-js/schema"
   }
 }
